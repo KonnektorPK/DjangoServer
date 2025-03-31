@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/svg/place.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диалоговое окно</title>
+    <link rel="stylesheet" href="static/css/stylesheet.css" type="text/css">
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .dialog {
+            width: 368px;
+            padding: 28px 16px 16px 16px;
+            background: var(--white);
+            border-radius: 28px;
+            box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.08), 0 0 8px 0 rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dialog_header {
+            color: var(--font-color-black);
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .dialog_text {
+            color: var(--beton);
+            font-weight: 400;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .dialog_footer {
+            display: flex;
+            gap: 16px;
+
+            & button {
+                flex: 1;
+            }
+        }
+
+        .button_primary {
+            background: var(--brick);
+            color: var(--white);
+        }
+
+        .button_secondary {
+            background: var(--brick-light);
+            color: var(--brick);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay" style="display: none;" id="overlay">
+        <div class="dialog">
+            <div class="dialog_header" id="dialog_title">Заголовок</div>
+            <div class="dialog_text" id="dialog_text">Текст</div>
+            <div class="dialog_footer" id="dialog_footer">
+                <button class="button button_secondary hidden" id="button_secondary">Отменить</button>
+                <button class="button button_primary" id="button_primary">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDialog(title, text, button1, button2) {
+            document.getElementById("dialog_title").textContent = title;
+            document.getElementById("dialog_text").textContent = text;
+
+            const btnPrimary = document.getElementById("button_primary");
+            const btnSecondary = document.getElementById("button_secondary");
+            const footer = document.getElementById("dialog_footer");
+
+            btnPrimary.textContent = button1;
+
+            if (button2) {
+                btnSecondary.textContent = button2;
+                btnSecondary.classList.remove("hidden");
+                footer.style.justifyContent = "";
+            } else {
+                btnSecondary.classList.add("hidden");
+                footer.style.justifyContent = "center";
+            }
+
+            document.getElementById("overlay").style.visibility = "visible";
+            document.getElementById("overlay").style.opacity = "1";
+        }
+
+        function hideDialog() {
+            document.getElementById("overlay").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("overlay").style.visibility = "hidden";
+            }, 300);
+        }
+
+        document.getElementById("button_primary").addEventListener("click", hideDialog);
+        document.getElementById("button_secondary").addEventListener("click", hideDialog);
+    </script>
+</body>
+
+</html>

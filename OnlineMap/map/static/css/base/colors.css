@@ -1,0 +1,13 @@
+:root {
+    --brick: #c14424;
+    --white: #fff;
+    --black: #000;
+    --brick-light: #fff8f6;
+    --beton: #828180;
+    --gray: #c7c5c4;
+    --beton-light: #f4f4f4;
+
+    --font-family: "Geologica", sans-serif;
+    --font-color-black: #33312f;
+    --font-color-white: var(--white);
+}

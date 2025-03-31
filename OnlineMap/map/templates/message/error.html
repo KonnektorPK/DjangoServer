@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/static/svg/place.svg">
+    <title>{{indexTitle}}</title>
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css'%}" type="text/css">
+    <script src="{% static 'js/error.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+
+<body>
+    <div class="info_container">
+        <div class="info_content">
+            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M39.9998 28.3332C33.5565 28.3332 28.3332 33.5565 28.3332 39.9998V118.261C28.3332 124.704 33.5565 129.927 39.9998 129.927H55.652C60.2544 129.927 63.9853 133.658 63.9853 138.261V159.881L91.4986 132.368C93.0614 130.805 95.181 129.927 97.3911 129.927H160C166.443 129.927 171.666 124.704 171.666 118.261V39.9998C171.666 33.5565 166.443 28.3332 160 28.3332H39.9998ZM11.6665 39.9998C11.6665 24.3518 24.3518 11.6665 39.9998 11.6665H160C175.648 11.6665 188.333 24.3518 188.333 39.9998V118.261C188.333 133.909 175.648 146.594 160 146.594H100.843L61.5446 185.892C59.1612 188.276 55.5769 188.989 52.463 187.699C49.349 186.409 47.3187 183.37 47.3187 180V146.594H39.9998C24.3518 146.594 11.6665 133.909 11.6665 118.261V39.9998ZM74.1073 54.1073C77.3616 50.8529 82.638 50.8529 85.8924 54.1073L99.9998 68.2147L114.107 54.1073C117.362 50.8529 122.638 50.8529 125.892 54.1073C129.147 57.3616 129.147 62.638 125.892 65.8924L111.785 79.9998L125.892 94.1073C129.147 97.3616 129.147 102.638 125.892 105.892C122.638 109.147 117.362 109.147 114.107 105.892L99.9998 91.7849L85.8924 105.892C82.638 109.147 77.3616 109.147 74.1073 105.892C70.8529 102.638 70.8529 97.3616 74.1073 94.1073L88.2147 79.9998L74.1073 65.8924C70.8529 62.638 70.8529 57.3616 74.1073 54.1073Z"
+                    fill="#C14424" />
+            </svg>
+            <div class="info_text">
+                <div class="info_title">
+                    {{title}}
+                </div>
+                <div class="info_description">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+        <div class="info_footer">
+            <button onclick="goMap()">{{name_button}}</button>
+        </div>
+    </div>
+</body>
+
+</html>

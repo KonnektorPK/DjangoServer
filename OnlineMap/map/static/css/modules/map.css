@@ -1,0 +1,32 @@
+.map_container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.map_placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto; 
+    cursor: grab; 
+    background-color: var(--white);
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+    & img {
+        display: flex;
+        align-content: center;
+        height: auto;
+        width: 100%;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+    }
+}
